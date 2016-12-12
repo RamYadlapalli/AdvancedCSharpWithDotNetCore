@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CSharpApp
 {
@@ -29,6 +30,12 @@ namespace CSharpApp
          Console.WriteLine($"Value of main count is {mainCount}");
 
 
+        //Async and Await
+       Worker workerObj = new Worker();
+        workerObj.work();
+        
+
+
         //Using ReadOnly Properties
         vehicle car=new vehicle();
         car.Name="Indica";
@@ -45,4 +52,41 @@ namespace CSharpApp
         private int wheels =2; 
     }
    
+public class Worker{
+    public Worker(){
+       // work();
+    }
+    public void work(){
+        AsyncClass asc= new AsyncClass();
+        asc.work();
+        Console.WriteLine("I'm on main Thread");
+       for (int i=0;i<10000;i++){
+            Console.Write(".");
+        }
+        
+        Console.WriteLine("Main Thred Completed");
+    }
+}
+
+public class AsyncClass{
+    /*public async void work(){
+        await SlowTask();
+        Console.WriteLine("End Work");
+    }*/
+     public async void work(){
+         await SlowTask();
+        Console.WriteLine("End Work");
+    }
+
+    public async Task SlowTask(){
+        for(int i=0;i<50;i++){
+            Console.WriteLine(i);
+            for(int j=0;j<10000;j++){
+                var k = Math.Sqrt(j);
+            }
+        }
+        Console.WriteLine("Done");
+    }
+}
+
 }
