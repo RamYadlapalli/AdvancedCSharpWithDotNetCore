@@ -1,7 +1,7 @@
 # AdvancedC#WithDotNetCore
 
-## C# Features
-1. string interpolation ($)
+## C# Features Covered
+1. String interpolation ($)
 2. Null Conditional Operator (?.)
 3. Null Coalescing (??)
 4. Async and Await
